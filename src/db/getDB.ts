@@ -3,7 +3,7 @@ import { DataStream, Query } from "@/utils/types"
 import fs from "fs"
 
 export default function getDBListRadio(filter: Query): DataStream[] {
-  const db = fs.readFileSync("./db/api_radio_id.json")
+  const db = fs.readFileSync("./src/db/api_radio_id.json")
   const dataDb: DataStream[] = JSON.parse(db.toString())
 
   // filter data
