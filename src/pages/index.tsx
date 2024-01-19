@@ -1,4 +1,4 @@
-import { getListRadio } from "@/api"
+import { getListRadio } from "@/action"
 import { Inter } from "next/font/google"
 import Head from "next/head"
 import Image from "next/image"
