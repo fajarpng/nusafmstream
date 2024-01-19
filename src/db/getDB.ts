@@ -1,9 +1,9 @@
-import { urlDb } from "@/utils/config"
+import { baseUrl } from "@/utils/config"
 import { filterPage, filterSearchName } from "@/utils/helper"
 import { DataStream, Query } from "@/utils/types"
 
 export default async function getDBListRadio(filter: Query): Promise<DataStream[]> {
-  const response = await fetch(urlDb)
+  const response = await fetch(baseUrl+"/api_radio_id.json")
   const dataDb = response.ok ? await response.json() : []
 
   // filter data
