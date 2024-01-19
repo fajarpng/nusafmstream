@@ -1,8 +1,6 @@
-import { isProd } from "@/utils/config"
+import { urlDb } from "@/utils/config"
 import { filterPage, filterSearchName } from "@/utils/helper"
 import { DataStream, Query } from "@/utils/types"
-
-const urlDb = isProd ? "/api_radio_id.json" : "http://localhost:3000/api_radio_id.json"
 
 export default async function getDBListRadio(filter: Query): Promise<DataStream[]> {
   const response = await fetch(urlDb)
