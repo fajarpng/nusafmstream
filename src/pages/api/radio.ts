@@ -3,7 +3,7 @@ import getDBListRadio from "@/db/getDB"
 import { Query, ResponseSuccess } from "@/utils/types"
 import type { NextApiRequest, NextApiResponse } from "next"
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseSuccess>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseSuccess>) {
   const { page = 1, limit = 20, search }: Query = req.query
 
   let response: ResponseSuccess = {
@@ -17,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
     }
   }
 
-  const data = getDBListRadio({ page, limit, search })
+  const data = await getDBListRadio({ page, limit, search })
 
   if (data.length) {
     response.data = data
