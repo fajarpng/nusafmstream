@@ -1,13 +1,34 @@
 import { getListRadio } from "@/action"
+import { baseUrl } from "@/utils/config"
 import { Inter } from "next/font/google"
 import Head from "next/head"
 import Image from "next/image"
+import { useEffect } from "react"
 import { useQuery } from "react-query"
 
 const inter = Inter({ subsets: [ "latin" ] })
 
+const fetchJsonData = async (): Promise<any> => {
+  try {
+    const response = await fetch(`${baseUrl}/api_radio_id.json`) // Replace with your actual URL
+    if (!response.ok) {
+      throw new Error(`Failed to fetch JSON: ${response.statusText}`)
+    }
+
+    const jsonData = await response.json()
+    console.log(jsonData)
+    // Process the JSON data as needed
+  } catch (error: any) {
+    console.error(`Error fetching JSON: ${error.message}`)
+  }
+}
+
 export default function Home() {
-  const {} = useQuery("list/radio", () => getListRadio(), { onSuccess: v => console.log(v) })
+  const {} = useQuery("list/radio", () => getListRadio(), {
+    onSuccess: v => console.log(v),
+    onError: err => console.log(err)
+  })
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -40,7 +61,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]" onClick={fetchJsonData}>
         <Image
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           src="/next.svg"

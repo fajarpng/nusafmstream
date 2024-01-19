@@ -1,4 +1,4 @@
-const isProd = false
-const urlDb = isProd ? "https://nusafmstream.vercel.app/api_radio_id.json" : "http://localhost:3000/api_radio_id.json"
+const isProd = true
+const baseUrl = isProd ? "https://nusafmstream.vercel.app" : "http://localhost:3000"
 
-export { isProd, urlDb }
+export { isProd, baseUrl }
