@@ -9,7 +9,7 @@ export type DataStream = {
 export type ResponseSuccess = {
   data: string[] | Object
   message: string
-  meta: Meta
+  // meta: Meta
 }
 
 export type Meta = {
@@ -20,7 +20,7 @@ export type Meta = {
 }
 
 export type Query = {
-  page?: number
-  limit?: number
+  // page?: number
+  // limit?: number
   search?: string
 }
