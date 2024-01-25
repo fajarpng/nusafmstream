@@ -1,30 +1,32 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import getDBListRadio from "@/db/getDB"
-import { Query, ResponseSuccess } from "@/utils/types"
+import { initMongoose } from "@/be/lib/mongoose"
+import Radio from "@/be/models/radio"
+import { ResponseSuccess } from "@/utils/types"
 import type { NextApiRequest, NextApiResponse } from "next"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseSuccess>) {
-  const { page = 1, limit = 20, search }: Query = req.query
+let response: ResponseSuccess = {
+  data: [],
+  message: "No Data.",
+}
 
-  let response: ResponseSuccess = {
-    data: [],
-    message: "No Data.",
-    meta: {
-      page,
-      totalPage: 1,
-      totalData: 0,
-      limit,
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    await initMongoose()
+    if (req.method === "POST") { // POST
+      const data = await Radio.create(req.body)
+      response.data = data
+      response.message = "success"
+      res.status(200).json(response)
+    } else if (req.method === "GET") { // GET
+      const data = await Radio.find({})
+      response.data = data
+      response.message = "success"
+      res.status(200).json(response)
+    } else { // ELSE
+      throw new Error(`Unsupported HTTP method: ${req.method}`)
     }
+  } catch (error) {
+    response.data = error || {}
+    response.message = "something went wrong"
+    res.json(response)
   }
-
-  const data = await getDBListRadio({ page, limit, search })
-
-  if (data.length) {
-    response.data = data
-    response.message = "success"
-    response.meta.totalPage = Math.round(data.length/limit || 1)
-    response.meta.totalData = data.length
-  }
-
-  res.status(200).json(response)
 }

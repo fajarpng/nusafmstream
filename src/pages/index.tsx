@@ -5,13 +5,11 @@ import Head from "next/head"
 import { useMemo } from "react"
 import { useQuery } from "react-query"
 
-const filter = { limit: 24 }
-
 export default function Home() {
   const { onChangeRadio } = useDataPlayer()
-  const { data } = useQuery([ "radio/list", filter ], () => getListRadio(filter))  
+  const { data } = useQuery([ "radio/list", {} ], () => getListRadio({}))  
 
-  const items: DataStream[] = useMemo(() => Array.isArray(data?.data) ? data?.data : [], [ data?.data ])
+  const items: DataStream[] = useMemo(() => Array.isArray(data) ? data : [], [ data ])
 
   return (
     <div className="flex flex-col items-center justify-between">
