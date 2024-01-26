@@ -1,4 +1,4 @@
-import { DataStream, Query } from "../types"
+import { DataStream } from "../types"
 
 export const filterSearchName = (array: DataStream[], search?: string) => {
   if (!search) return array
@@ -9,8 +9,8 @@ export const filterSearchName = (array: DataStream[], search?: string) => {
   return data
 }
 
-export const filterPage = (array: DataStream[], { page = 1, limit = 20 }: Query) => {
-  let data = [ ...array ]
-  data = data.slice(+limit*(+page-1), +page*+limit)
-  return data
-}
+// export const filterPage = (array: DataStream[], { page = 1, limit = 20 }: Query) => {
+//   let data = [ ...array ]
+//   data = data.slice(+limit*(+page-1), +page*+limit)
+//   return data
+// }
