@@ -1,5 +1,5 @@
 export type DataStream = {
-    id: string | number
+    _id: string | number
     title: string
     logo: string
     streamUrl: string
