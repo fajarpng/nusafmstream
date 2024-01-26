@@ -1,5 +1,5 @@
-import { initMongoose } from "@/be/lib/mongoose"
-import Radio from "@/be/models/radio"
+import { initMongoose } from "@/backend/lib/mongoose"
+import Radio from "@/backend/models/radio"
 import { ResponseSuccess } from "@/utils/types"
 import type { NextApiRequest, NextApiResponse } from "next"
 
@@ -18,8 +18,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(200).json(response)
     } else if (req.method === "GET") { // GET
       const data = await Radio.find({})
-      response.data = data
-      response.message = "success"
+      if (data?.length) {
+        response.data = data
+        response.message = "success"
+      }
       res.status(200).json(response)
     } else { // ELSE
       throw new Error(`Unsupported HTTP method: ${req.method}`)

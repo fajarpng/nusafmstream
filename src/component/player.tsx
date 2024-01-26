@@ -2,18 +2,18 @@
 
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { usePlayer } from "@/hooks/usePlayer"
-import { useEffect, useRef } from "react"
-import { FaPlay, FaStop } from "react-icons/fa"
+import { useEffect, useMemo, useRef } from "react"
+import { FaPlay, FaSpinner, FaStop } from "react-icons/fa"
 
 export default function PlayerComponent() {
-  const { isPlaying, onPlay, onPause } = usePlayer()
+  const { isPlaying, onPlay, onPause, isLoading, setLoading } = usePlayer()
   const { dataRadio: data } = useDataPlayer()
 
   let audio = useRef<HTMLAudioElement>(new Audio(data?.streamUrl))
 
   useEffect(() => {
 
-    if (data?.streamUrl) {
+    if (data?.streamUrl && data?.streamUrl !== audio.current.src && !isLoading) {
       onPause()
       audio.current.src = data.streamUrl
       handlePlay()
@@ -28,27 +28,37 @@ export default function PlayerComponent() {
   }
   const handlePlay = async () => {
     if (audio.current) {
+      setLoading()
       await audio.current.play()
         .then(() => onPlay())
         .catch (error => console.error("Error playing audio:", error))
+        .finally(setLoading)
     }
   }
 
-  return <div className="w-screen h-[80px] bg-gray-900 absolute p-2">
-    <div className="flex items-center justify-center gap-4">
+  const renderIcons = useMemo(() => {
+    if (isLoading) return <button disabled><FaSpinner className=" size-7" /></button>
+    else if (isPlaying) return <button onClick={handlePause}><FaStop className=" size-7" /></button>
+    return <button onClick={handlePlay}><FaPlay className=" size-7" /></button>
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ isLoading, isPlaying ])
+
+  return <div className="w-screen h-[80px] bg-slate-800 absolute p-2">
+    <div className="flex items-center md:flex-row-reverse md:justify-around gap-4">
+
       <div>
-        {!isPlaying
-          ? <button onClick={handlePlay}><FaPlay /></button>
-          : <button onClick={handlePause}><FaStop /></button>
-        }
+        {renderIcons}
       </div>
-      <div className=" w-[60px] h-[60px] rounded-md overflow-hidden bg-white">
-        <img
-          src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
-          className="h-full w-full object-contain"
-        />
+      
+      <div className="flex items-center gap-4 justify-center">
+        <div className=" w-[60px] h-[60px] rounded-md overflow-hidden bg-white">
+          <img
+            src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
+            className="h-full w-full object-contain"
+          />
+        </div>
+        <div className=" text-lg">{data?.title}</div>
       </div>
-      <div className=" text-lg">{data?.title}</div>
     </div>
   </div>
 }
