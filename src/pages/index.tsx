@@ -19,7 +19,7 @@ export default function Home() {
       <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 p-10">
         {items?.map((v, i: number) => (
           <div key={i} onClick={() => onChangeRadio(v)}>
-            <div className=" bg-white w-[100px] h-[100px] md:w-[150px] md:h-[150px] lg:w-[200px] lg:h-[200px] rounded-md overflow-hidden">
+            <div className=" bg-white w-[80px] h-[80px] md:w-[130px] md:h-[130px] lg:w-[180px] lg:h-[180px] rounded-md overflow-hidden">
               <img
                 src={v.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={v.title}
                 className="w-[100%] h-[100%] object-contain"
