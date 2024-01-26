@@ -1,17 +1,17 @@
-import { baseUrl } from "@/utils/config"
-import { filterPage, filterSearchName } from "@/utils/helper"
-import { DataStream, Query } from "@/utils/types"
+// import { baseUrl } from "@/utils/config"
+// import { filterPage, filterSearchName } from "@/utils/helper"
+// import { DataStream, Query } from "@/utils/types"
 
-export default async function getDBListRadio(filter: Query): Promise<DataStream[]> {
-  const response = await fetch(baseUrl+"/api_radio_id.json")
-  const dataDb = response.ok ? await response.json() : []
+// export default async function getDBListRadio(filter: Query): Promise<DataStream[]> {
+//   const response = await fetch(baseUrl+"/api_radio_id.json")
+//   const dataDb = response.ok ? await response.json() : []
 
-  // filter data
-  let data: DataStream[] = [ ...dataDb ]
+//   // filter data
+//   let data: DataStream[] = [ ...dataDb ]
 
-  data = filterSearchName(data, filter.search)
-  data = filterPage(data, filter)
-  // end filter data
+//   data = filterSearchName(data, filter.search)
+//   data = filterPage(data, filter)
+//   // end filter data
 
-  return data
-}
+//   return data
+// }
