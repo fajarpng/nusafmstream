@@ -3,7 +3,8 @@
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { usePlayer } from "@/hooks/usePlayer"
 import { useEffect, useMemo, useRef } from "react"
-import { FaPlay, FaSpinner, FaStop } from "react-icons/fa"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import { FaPlay, FaStop } from "react-icons/fa"
 
 export default function PlayerComponent() {
   const { isPlaying, onPlay, onPause, isLoading, setLoading } = usePlayer()
@@ -37,7 +38,7 @@ export default function PlayerComponent() {
   }
 
   const renderIcons = useMemo(() => {
-    if (isLoading) return <button disabled><FaSpinner className=" size-7" /></button>
+    if (isLoading) return <button disabled><AiOutlineLoading3Quarters className=" size-7 animate-spin" /></button>
     else if (isPlaying) return <button onClick={handlePause}><FaStop className=" size-7" /></button>
     return <button onClick={handlePlay}><FaPlay className=" size-7" /></button>
   // eslint-disable-next-line react-hooks/exhaustive-deps
