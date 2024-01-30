@@ -17,6 +17,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Streaming Radio Nusantara</title>
+        <meta name="description" content="Immerse yourself in Indonesia's musical mosaic with Streaming Radio Nusantara. 24/7 streaming of traditional and contemporary tunes, a cultural journey in every beat."/>
       </Head>
       {isLoading
         ? <LoadingComponent />

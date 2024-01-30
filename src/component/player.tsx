@@ -2,7 +2,7 @@
 
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { usePlayer } from "@/hooks/usePlayer"
-import { useEffect, useMemo, useRef } from "react"
+import { KeyboardEvent, useEffect, useMemo, useRef } from "react"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import { FaPlay, FaStop } from "react-icons/fa"
 
@@ -22,6 +22,26 @@ export default function PlayerComponent() {
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ data?.streamUrl ])
+
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent|any) => {
+      if (event.key === " ") {
+        event.preventDefault()
+        handlePlayPause()
+      }
+    }
+
+    document.addEventListener("keydown", keyDownHandler)
+
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handlePlayPause = () => {
+    isPlaying ? handlePause() : handlePlay()
+  }
 
   const handlePause = () => {
     onPause()
