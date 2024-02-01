@@ -17,9 +17,9 @@ export default function CardList({ data }: {data: DataStream}) {
     return <FaPlay className=" size-8" />
   }, [ currentPlaying?._id, data?._id, isLoading, isPlaying ])
 
-  return <div className=" flex flex-col items-center text-center">
-    <div className="group bg-white w-full h-full max-w-[100px] min-h-[100px] md:max-w-[130px] md:min-h-[130px] lg:max-w-[180px] lg:min-h-[180px] rounded-md overflow-hidden relative grid items-center">
-      <div className="absolute bg-[rgba(0,0,0,.5)] w-full h-full group-hover:grid justify-center items-center hidden duration-75 cursor-pointer">
+  return <div className="text-center group cursor-pointer ">
+    <div className="bg-white w-full aspect-square rounded-md overflow-hidden relative grid items-center p-1 self-center">
+      <div className="absolute bg-black bg-opacity-30 w-full h-full group-hover:grid justify-center items-center hidden duration-75 text-orange-500">
         {renderIcons}
       </div>
       <img
@@ -27,6 +27,6 @@ export default function CardList({ data }: {data: DataStream}) {
         className="w-full h-full object-contain"
       />
     </div>
-    <div className=" mt-4">{data?.title}</div>
+    <p className=" mt-4 group-hover:text-orange-500 text-sm md:text-base line-clamp-2 text-ellipsis">{data?.title}</p>
   </div>
 }
