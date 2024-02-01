@@ -1,3 +1,4 @@
+import { Footer } from "@/component/footer"
 import PlayerComponent from "@/component/player"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import "@/styles/globals.css"
@@ -21,13 +22,16 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   const { dataRadio } = useDataPlayer()
-  return <div>
-    <div className={`${dataRadio?.streamUrl ? "h-[calc(100vh-80px)]" : "h-screen"} overflow-scroll`}>
+  return <div className=" bg-[linear-gradient(#1c2d44,#101e2b)]">
+    <div className={`${dataRadio?.streamUrl ? "h-[calc(100vh-80px)]" : "h-screen"} overflow-scroll relative`}>
       <QueryClientProvider client={queryClient}>
         <main className={inter.className}>
           <Component {...pageProps} />
         </main>
       </QueryClientProvider>
+      <div className=" absolute bottom-0 right-0">
+        <Footer />
+      </div>
     </div>
     {dataRadio?.streamUrl && <PlayerComponent />}
   </div>

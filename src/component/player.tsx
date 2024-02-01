@@ -2,7 +2,7 @@
 
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { usePlayer } from "@/hooks/usePlayer"
-import { KeyboardEvent, useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import { FaPlay, FaStop } from "react-icons/fa"
 
@@ -23,25 +23,23 @@ export default function PlayerComponent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ data?.streamUrl ])
 
-  useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent|any) => {
-      if (event.key === " ") {
-        event.preventDefault()
-        handlePlayPause()
-      }
-    }
+  // const keyDownHandler = (event: KeyboardEvent|any, isPlaying: boolean) => {
+  //   if (event.key === " ") {
+  //     event.preventDefault()
+    
+  //     isPlaying ? console.log("pressed pause") : console.log("pressed start")
+  //     // isPlaying ? handlePause() : handlePlay()
+  //   }
+  // }
 
-    document.addEventListener("keydown", keyDownHandler)
+  // useEffect(() => {
+  //   document.addEventListener("keydown", event => keyDownHandler(event, isPlaying))
 
-    return () => {
-      document.removeEventListener("keydown", keyDownHandler)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const handlePlayPause = () => {
-    isPlaying ? handlePause() : handlePlay()
-  }
+  //   return () => {
+  //     document.removeEventListener("keydown", event => keyDownHandler(event, isPlaying))
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   const handlePause = () => {
     onPause()
@@ -64,21 +62,21 @@ export default function PlayerComponent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ isLoading, isPlaying ])
 
-  return <div className="w-screen h-[80px] bg-slate-800 absolute p-2">
-    <div className="flex items-center md:flex-row-reverse md:justify-around gap-4">
+  return <div className="w-screen h-[80px] bg-slate-800 absolute p-2 border-t border-orange-500">
+    <div className="flex items-center justify-around px-2 md:px-0 md:flex-row-reverse  md:justify-around gap-4">
 
-      <div>
+      <div className=" text-orange-500">
         {renderIcons}
       </div>
       
       <div className="flex items-center gap-4 justify-center">
-        <div className=" w-[60px] h-[60px] rounded-md overflow-hidden bg-white">
+        <div className=" w-full max-w-[60px] aspect-square rounded-md overflow-hidden bg-white">
           <img
             src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
             className="h-full w-full object-contain"
           />
         </div>
-        <div className=" text-lg">{data?.title}</div>
+        <div className=" hidden md:block text-base md:text-lg line-clamp-1 text-ellipsis">{data?.title}</div>
       </div>
     </div>
   </div>

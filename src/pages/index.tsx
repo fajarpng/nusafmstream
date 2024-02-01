@@ -1,6 +1,7 @@
 import { getListRadio } from "@/action"
 import CardList from "@/component/cardList"
 import LoadingComponent from "@/component/loading"
+import { SearchBar } from "@/component/searchBar"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { DataStream } from "@/utils/types"
 import Head from "next/head"
@@ -21,12 +22,17 @@ export default function Home() {
       </Head>
       {isLoading
         ? <LoadingComponent />
-        : <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 p-5 md:p-10">
-          {items?.map((v, i: number) => (
-            <div key={i} onClick={() => onChangeRadio(v)}>
-              <CardList data={v} />
-            </div>
-          ))}
+        : <div className=" p-5">
+          <div className=" flex justify-center mt-2 mb-10 md:mb-0">
+            <SearchBar />
+          </div>
+          <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:p-10">
+            {items?.map((v, i: number) => (
+              <div key={i} onClick={() => onChangeRadio(v)}>
+                <CardList data={v} />
+              </div>
+            ))}
+          </div>
         </div>
       }
 
