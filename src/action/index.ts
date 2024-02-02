@@ -6,3 +6,11 @@ export const getListRadio = (params?:Query) => {
     .then(res => (res.data.data || []))
     .catch(error => { throw error })
 }
+
+export const addRadio = (body: object) => {
+  return axios.post<ResponseSuccess>("/api/radio", body)
+    .then(res => {
+      res.data.data || []
+    })
+    .catch(error => { throw error })
+}

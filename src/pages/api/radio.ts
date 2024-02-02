@@ -29,6 +29,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     response.data = error || {}
     response.message = "something went wrong"
-    res.json(response)
+    res.status(400).send(response)
   }
 }

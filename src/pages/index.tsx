@@ -3,16 +3,22 @@ import CardList from "@/component/cardList"
 import LoadingComponent from "@/component/loading"
 import { SearchBar } from "@/component/searchBar"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
+import { filterSearchName } from "@/utils/helper"
 import { DataStream } from "@/utils/types"
 import Head from "next/head"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { useQuery } from "react-query"
 
 export default function Home() {
   const { onChangeRadio } = useDataPlayer()
-  const { data, isLoading } = useQuery([ "radio/list", {} ], () => getListRadio({}))  
+  const [ search, setSearch ] = useState<string>("")
+  const { data, isLoading } = useQuery([ "radio/list", {} ], () => getListRadio({}))
 
-  const items: DataStream[] = useMemo(() => Array.isArray(data) ? data : [], [ data ])
+  const items: DataStream[] = useMemo(() => {
+    let dt = Array.isArray(data) ? data : []
+    dt = filterSearchName(dt, search)
+    return dt
+  }, [ data, search ])
 
   return (
     <div>
@@ -24,7 +30,7 @@ export default function Home() {
         ? <LoadingComponent />
         : <div className=" p-5">
           <div className=" flex justify-center mt-2 mb-10 md:mb-0">
-            <SearchBar />
+            <SearchBar value={search} onChange={setSearch} />
           </div>
           <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:p-10">
             {items?.map((v, i: number) => (
