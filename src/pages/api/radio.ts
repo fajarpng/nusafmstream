@@ -1,6 +1,7 @@
 import { initMongoose } from "@/backend/lib/mongoose"
 import Radio from "@/backend/models/radio"
 import { ResponseSuccess } from "@/utils/types"
+import { Error } from "mongoose"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 let response: ResponseSuccess = {
@@ -29,6 +30,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     response.data = error || {}
     response.message = "something went wrong"
-    res.status(400).send(response)
+   
+    if (error instanceof Error.ValidationError) {
+      response.data = error.errors
+      response.message = error.message
+      return res.status(400).json(response)
+    }
+    res.status(500).json(response)
   }
 }
