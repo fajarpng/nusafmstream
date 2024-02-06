@@ -2,6 +2,7 @@ import { DataStream } from "@/utils/types"
 import { Dialog, Transition } from "@headlessui/react"
 import { FormEvent, Fragment, ReactElement, cloneElement, useState } from "react"
 import { FaPlus } from "react-icons/fa"
+import { MdEdit } from "react-icons/md"
 
 interface ModalProps {
   isLoading?: boolean
@@ -64,7 +65,10 @@ export const ModalFromRadio = ({ visible = false, isLoading = false, onSave, chi
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2"
                 >
-                  <FaPlus className=" size-4" /> Add Radio
+                  {!!defaultValue
+                    ? <span className="flex items-center gap-2"><MdEdit className=" size-4" /> Edit Radio</span>
+                    : <span className="flex items-center gap-2"><FaPlus className=" size-4" /> Add Radio</span>
+                  }
                 </Dialog.Title>
 
                 <form className="mt-8" onSubmit={onSubmit}>

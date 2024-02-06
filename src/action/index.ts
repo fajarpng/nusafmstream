@@ -14,3 +14,11 @@ export const addRadio = (body: object) => {
     })
     .catch(error => { throw error })
 }
+
+export const editRadio = ({ body, id }:{body: object, id: number|string}) => {
+  return axios.put<ResponseSuccess>(`/api/radio/${id}`, body)
+    .then(res => {
+      res.data.data || []
+    })
+    .catch(error => { throw error })
+}
