@@ -10,19 +10,13 @@ let response: ResponseSuccess = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { method } = req
   try {
     await initMongoose()
-    if (req.method === "POST") { // POST
-      const data = await Radio.create(req.body)
+    if (method === "PUT") {
+      const data = await Radio.findOneAndUpdate({ _id: req.query.id }, req.body, { returnOriginal: false })
       response.data = data
       response.message = "success"
-      res.status(200).json(response)
-    } else if (req.method === "GET") { // GET
-      const data = await Radio.find({})
-      if (data?.length) {
-        response.data = data
-        response.message = "success"
-      }
       res.status(200).json(response)
     } else { // ELSE
       throw new Error(`Unsupported HTTP method: ${req.method}`)

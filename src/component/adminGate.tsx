@@ -9,7 +9,6 @@ export default function AdminGate() {
     event.preventDefault()
     const secretKey = process.env.NEXT_PUBLIC_PASS_ADMIN
     const pw = event.currentTarget.password?.value
-    console.log(secretKey, pw)
     
     if (pw === secretKey) onLogin()
   }
