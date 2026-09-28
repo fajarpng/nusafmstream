@@ -12,8 +12,8 @@ export const AddRadioButton = () => {
   }
   return <div>
     <ModalFromRadio onSave={onSubmit} isLoading={mutateAdd.isLoading}>
-      <button className=" bg-orange-500 hover:bg-orange-400 text-sm px-4 py-3 rounded-lg font-bold flex items-center gap-2">
-        <FaPlus /> Radio
+      <button className="inline-flex gap-2 tracking-widest font-semibold hover:text-white hover:bg-orange-500 items-center justify-center rounded-md p-2 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+        <FaPlus /> RADIO
       </button>
     </ModalFromRadio>
   </div>

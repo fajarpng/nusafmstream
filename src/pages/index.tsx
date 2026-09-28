@@ -1,5 +1,6 @@
 import { getListRadio } from "@/action"
 import CardList from "@/component/cardList"
+import FontShowcase from "@/component/fontShowcase"
 import LoadingComponent from "@/component/loading"
 import { SearchBar } from "@/component/searchBar"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
@@ -34,7 +35,7 @@ export default function Home() {
           </div>
           <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:p-10">
             {items?.map((v, i: number) => (
-              <div key={i} onClick={() => onChangeRadio(v)}>
+              <div key={i} onClick={() => onChangeRadio(v)} className='h-full'>
                 <CardList data={v} />
               </div>
             ))}

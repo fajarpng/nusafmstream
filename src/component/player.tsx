@@ -62,10 +62,10 @@ export default function PlayerComponent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ isLoading, isPlaying ])
 
-  return <div className="w-screen h-[80px] bg-slate-800 absolute p-2 border-t border-orange-500">
+  return <div className="w-screen h-[80px] bg-white absolute p-2 border-t-2 border-black">
     <div className="flex items-center justify-around px-2 md:px-0 md:flex-row-reverse  md:justify-around gap-4">
 
-      <div className=" text-orange-500">
+      <div className="inline-flex items-center justify-center rounded-md p-2 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
         {renderIcons}
       </div>
       

@@ -19,16 +19,18 @@ export default function CardList({ data, isAdmin = false }: {data: DataStream, i
     return <FaPlay className=" size-8" />
   }, [ currentPlaying?._id, data?._id, isLoading, isPlaying, isAdmin ])
 
-  return <div className="text-center group cursor-pointer ">
-    <div className="bg-white w-full aspect-square rounded-md overflow-hidden relative grid items-center p-1 self-center">
+  return <div className="h-full group cursor-pointer rounded-xl p-4 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+    <div className="w-full aspect-square relative self-center rounded-md ">
       <div className="absolute bg-black bg-opacity-30 w-full h-full group-hover:grid justify-center items-center hidden duration-75 text-orange-500">
         {renderIcons}
       </div>
       <img
         src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title}
-        className="w-full h-full object-contain"
+        className="w-full h-full object-contain ring-2 ring-black rounded-md"
       />
     </div>
-    <p className=" mt-4 group-hover:text-orange-500 text-sm md:text-base line-clamp-2 text-ellipsis">{data?.title}</p>
+    <p className=" mt-4 group-hover:text-orange-500 md:text-base line-clamp-2 text-ellipsis font-space-grotesk">
+      {data?.title}
+    </p>
   </div>
 }

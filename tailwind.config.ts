@@ -2,9 +2,7 @@ import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -16,6 +14,13 @@ const config: Config = {
       colors: {
         "gradient-nusa": "linear-gradient(#1c2d44, #101e2b)",
         "dark-orange": "#d44f53"
+      },
+      fontFamily: {
+        "space-grotesk": [ "var(--font-space-grotesk)" ],
+        "archivo-black": [ "var(--font-archivo-black)" ],
+        "space-mono": [ "var(--font-space-mono)" ],
+        "public-sans": [ "var(--font-public-sans)" ],
+        "bricolage": [ "var(--font-bricolage)" ],
       }
     },
   },
