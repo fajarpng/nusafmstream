@@ -41,7 +41,7 @@ export default function App() {
           </div>
           <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 py-5">
             {items?.map((v, i: number) => (
-              <div key={i}>
+              <div key={i} className='h-full'>
                 <CardAdmin data={v} />
               </div>
             ))}
@@ -61,6 +61,6 @@ const CardAdmin = ({ data }: {data: DataStream}) => {
   }
 
   return <ModalFromRadio defaultValue={data} onSave={onSubmit} isLoading={mutateEdit.isLoading}>
-    <div> <CardList data={data} isAdmin /> </div>
+    <div className='h-full'> <CardList data={data} isAdmin /> </div>
   </ModalFromRadio>
 }

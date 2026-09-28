@@ -32,7 +32,7 @@ export const ModalFromRadio = ({ visible = false, isLoading = false, onSave, chi
     onSave && onSave(data, closeModal)
   }
 
-  return <div>
+  return <div className="h-full">
     {children && cloneElement(children, { onClick: openModal })}
 
     <Transition appear show={isOpen} as={Fragment}>
@@ -60,10 +60,10 @@ export const ModalFromRadio = ({ visible = false, isLoading = false, onSave, chi
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-md bg-white border-4 border-black p-6 text-left align-middle shadow-[8px_8px_0_#000] transition-all">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2"
+                  className="text-lg font-bold uppercase tracking-widest leading-6 text-black flex items-center gap-2 bg-orange-500 border-2 border-black rounded-md px-3 py-2 w-fit"
                 >
                   {!!defaultValue
                     ? <span className="flex items-center gap-2"><MdEdit className=" size-4" /> Edit Radio</span>
@@ -72,21 +72,21 @@ export const ModalFromRadio = ({ visible = false, isLoading = false, onSave, chi
                 </Dialog.Title>
 
                 <form className="mt-8" onSubmit={onSubmit}>
-                  <p className=" text-black mb-2">Radio name</p>
+                  <p className="text-black font-bold uppercase text-xs tracking-widest mb-2">Radio name</p>
                   <input
-                    className="w-full outline-none p-2 text-black border border-orange-400 rounded-md mb-4"
+                    className="w-full outline-none p-3 text-black font-medium bg-white border-2 border-black rounded-md mb-4"
                     placeholder="radio name" type="text" name="title" required
                     defaultValue={defaultValue?.title}
                   />
-                  <p className=" text-black mb-2">Logo url</p>
+                  <p className="text-black font-bold uppercase text-xs tracking-widest mb-2">Logo url</p>
                   <input
-                    className="w-full outline-none p-2 text-black border border-orange-400 rounded-md mb-4"
+                    className="w-full outline-none p-3 text-black font-medium bg-white border-2 border-black rounded-md mb-4"
                     placeholder="logo url" type="text" name="logo"
                     defaultValue={defaultValue?.logo}
                   />
-                  <p className=" text-black mb-2">Streaming url</p>
+                  <p className="text-black font-bold uppercase text-xs tracking-widest mb-2">Streaming url</p>
                   <input
-                    className="w-full outline-none p-2 text-black border border-orange-400 rounded-md mb-4"
+                    className="w-full outline-none p-3 text-black font-medium bg-white border-2 border-black rounded-md mb-4"
                     placeholder="url streaming radio" type="text" required name="streamUrl"
                     defaultValue={defaultValue?.streamUrl}
                   />
@@ -95,14 +95,14 @@ export const ModalFromRadio = ({ visible = false, isLoading = false, onSave, chi
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className=" inline-flex justify-center rounded-md border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium hover:bg-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border-2 border-black bg-orange-500 px-4 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out disabled:opacity-50 disabled:pointer-events-none"
                     >
                       {isLoading? "saving...." :"save"}
                     </button>
                     <button
                       type="button"
                       disabled={isLoading}
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border-2 border-black bg-white px-4 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out disabled:opacity-50 disabled:pointer-events-none"
                       onClick={closeModal}
                     >
                       cancel
