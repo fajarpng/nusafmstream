@@ -12,7 +12,7 @@ export const AddRadioButton = () => {
   }
   return <div>
     <ModalFromRadio onSave={onSubmit} isLoading={mutateAdd.isLoading}>
-      <button className="inline-flex gap-2 tracking-widest font-semibold hover:text-white hover:bg-orange-500 items-center justify-center rounded-md p-2 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+      <button className="inline-flex gap-2 tracking-widest font-archivo-black hover:text-[#B8FF3C] hover:bg-black items-center justify-center rounded-md px-3 py-2 bg-[#B8FF3C] text-black border-[3px] border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
         <FaPlus /> RADIO
       </button>
     </ModalFromRadio>

@@ -76,7 +76,7 @@ export default function PlayerComponent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ isLoading, isPlaying ])
 
-  return <div className=" bg-white p-4 md:px-8 border-4 border-black flex md:items-center justify-between gap-4 shadow-[6px_6px_0_#000]">
+  return <div className=" bg-white p-4 md:px-8 border-4 border-black flex md:items-center justify-between gap-4 shadow-[6px_6px_0_#000] mb-4">
 
     <div className="flex items-center gap-3 min-w-0">
       <div className="w-full max-w-[56px] aspect-square overflow-hidden bg-white border-2 border-black shrink-0">
@@ -87,7 +87,7 @@ export default function PlayerComponent() {
       </div>
       <div className="min-w-0">
         {isPlaying && (
-          <span className="inline-flex items-center gap-1.5 bg-yellow-300 border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest mb-1">
+          <span className="inline-flex items-center gap-1.5 bg-[#B8FF3C] border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest mb-1">
             <span className="size-1.5 rounded-full bg-red-600 animate-pulse" />
             Now playing
           </span>
@@ -103,7 +103,7 @@ export default function PlayerComponent() {
       >
         <FaStepBackward className="size-3 md:size-4 text-black" />
       </button>
-      <div className="inline-flex items-center justify-center p-1 md:p-3 bg-orange-500 border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+      <div className="inline-flex items-center justify-center p-1 md:p-3 bg-[#FF3E9D] border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
         {renderIcons}
       </div>
       <button
@@ -121,7 +121,7 @@ export default function PlayerComponent() {
       <input
         type="range" min={0} max={1} step={0.01} value={volume}
         onChange={e => setVolume(Number(e.target.value))}
-        className="w-24 accent-orange-500"
+        className="w-24 accent-[#FF3E9D]"
       />
     </div>
   </div>
