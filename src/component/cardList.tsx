@@ -19,7 +19,7 @@ export default function CardList({ data, isAdmin = false }: {data: DataStream, i
     return <FaPlay className=" size-8" />
   }, [ currentPlaying?._id, data?._id, isLoading, isPlaying, isAdmin ])
 
-  return <div className="h-full group cursor-pointer rounded-xl p-4 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+  return <div className="h-full group cursor-pointer rounded-xl p-4 bg-[#F7F4EA] border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
     <div className="w-full aspect-square relative self-center rounded-md ">
       <div className="absolute bg-black bg-opacity-30 w-full h-full group-hover:grid justify-center items-center hidden duration-75 text-orange-500">
         {renderIcons}

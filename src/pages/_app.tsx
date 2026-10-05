@@ -27,17 +27,17 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   const { dataRadio } = useDataPlayer()
-  return <div className={`bg-[#FFDB58] ${spaceGrotesk.variable} ${archivoBlack.variable} ${spaceMono.variable} ${publicSans.variable} ${bricolage.variable}`}>
-    <div className={`${dataRadio?.streamUrl ? "h-[calc(100vh-80px)]" : "h-screen"} overflow-scroll relative`}>
+  return <div className={`bg-[#FFD93D] ${spaceGrotesk.variable} ${archivoBlack.variable} ${spaceMono.variable} ${publicSans.variable} ${bricolage.variable}`}>
+    <div className='min-h-screen'>
       <QueryClientProvider client={queryClient}>
-        <main className={inter.className}>
+        <main className={inter.className }>
           <Component {...pageProps} />
+          <div className="w-full fixed bottom-0 px-5 bg-[#FFD93D] z-30">
+            {dataRadio?.streamUrl && <PlayerComponent />}
+            <Footer />
+          </div>
         </main>
       </QueryClientProvider>
-      <div className=" absolute bottom-0 right-0">
-        <Footer />
-      </div>
     </div>
-    {dataRadio?.streamUrl && <PlayerComponent />}
   </div>
 }

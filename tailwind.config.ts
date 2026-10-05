@@ -13,7 +13,8 @@ const config: Config = {
       },
       colors: {
         "gradient-nusa": "linear-gradient(#1c2d44, #101e2b)",
-        "dark-orange": "#d44f53"
+        "dark-orange": "#d44f53",
+        "nusa-pink": "#FF3E9D"
       },
       fontFamily: {
         "space-grotesk": [ "var(--font-space-grotesk)" ],

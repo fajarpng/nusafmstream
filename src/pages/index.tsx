@@ -1,17 +1,16 @@
 import { getListRadio } from "@/action"
 import CardList from "@/component/cardList"
-import FontShowcase from "@/component/fontShowcase"
+import Header from "@/component/header"
 import LoadingComponent from "@/component/loading"
-import { SearchBar } from "@/component/searchBar"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { filterSearchName } from "@/utils/helper"
 import { DataStream } from "@/utils/types"
 import Head from "next/head"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useQuery } from "react-query"
 
 export default function Home() {
-  const { onChangeRadio } = useDataPlayer()
+  const { onChangeRadio, setDataList } = useDataPlayer()
   const [ search, setSearch ] = useState<string>("")
   const { data, isLoading } = useQuery([ "radio/list", {} ], () => getListRadio({}))
 
@@ -21,19 +20,25 @@ export default function Home() {
     return dt
   }, [ data, search ])
 
+  useEffect(() => {
+    setDataList(items)
+  }, [ items, setDataList ])
+
   return (
-    <div>
+    <div className=" min-h-screen pb-[34dvh] md:pb-[15dvh]">
       <Head>
         <title>Streaming Radio Nusantara</title>
         <meta name="description" content="Immerse yourself in Indonesia's musical mosaic with Streaming Radio Nusantara. 24/7 streaming of traditional and contemporary tunes, a cultural journey in every beat."/>
       </Head>
       {isLoading
         ? <LoadingComponent />
-        : <div className=" p-5">
-          <div className=" flex justify-center mt-2 mb-10 md:mb-0">
-            <SearchBar value={search} onChange={setSearch} />
+        : <div className="p-5">
+          <Header search={search} onSearchChange={setSearch} />
+          <div className="flex items-center gap-4 md:pr-10 md:px-10 my-4 ">
+            <p className="font-extrabold font-archivo-black uppercase text-lg md:text-2xl text-black tracking-tighter bg-gradient-to-t from-green-500 from-50% to-transparent to-50% px-4">Radio Stations</p>
+            <div className="flex-1 border-t-2 border-black" />
           </div>
-          <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:p-10">
+          <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:px-10 pb-10">
             {items?.map((v, i: number) => (
               <div key={i} onClick={() => onChangeRadio(v)} className='h-full'>
                 <CardList data={v} />

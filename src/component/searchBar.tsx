@@ -9,13 +9,20 @@ interface SbProps {
 export const SearchBar = ({ value, onChange }: SbProps) => {
   const setValue = (v: string) => onChange && onChange(v)
 
-  return <div className="flex items-center gap-4 w-full max-w-[500px] bg-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] ring-2 ring-black p-3 rounded-lg">
-    <FaSearch className=" text-black mx-1" />
+  return <div className="flex items-center gap-3 w-full max-w-[600px] bg-white border-4 border-black shadow-[6px_6px_0_#000] p-2 rounded-xl">
+    <FaSearch className="text-black mx-1 size-5" />
     <input
-      className=" outline-none bg-transparent w-full placeholder:text-black text-black font-space-grotesk"
-      placeholder="find your favorite..." value={value}
+      className="outline-none bg-transparent w-full placeholder:text-black placeholder:opacity-50 text-black font-space-grotesk font-medium"
+      placeholder="Find your favorite radio..." value={value}
       onChange={e => setValue(e.target.value)}
     />
-    {value && <FaX onClick={() => setValue("")} className="text-black mx-2 cursor-pointer" />}
+    {value && (
+      <button
+        onClick={() => setValue("")}
+        className="flex items-center justify-center bg-white border-2 border-black rounded-md size-7 shrink-0 hover:bg-nusa-pink transition-colors"
+      >
+        <FaX className="text-black size-3" />
+      </button>
+    )}
   </div>
 }

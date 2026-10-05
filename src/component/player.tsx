@@ -2,15 +2,24 @@
 
 import { useDataPlayer } from "@/hooks/useDataPlayer"
 import { usePlayer } from "@/hooks/usePlayer"
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
-import { FaPlay, FaStop } from "react-icons/fa"
+import { FaPlay, FaStepBackward, FaStepForward, FaStop, FaVolumeMute, FaVolumeUp } from "react-icons/fa"
 
 export default function PlayerComponent() {
   const { isPlaying, onPlay, onPause, isLoading, setLoading } = usePlayer()
-  const { dataRadio: data } = useDataPlayer()
+  const { dataRadio: data, dataList, onChangeRadio } = useDataPlayer()
+  const [ volume, setVolume ] = useState<number>(1)
 
   let audio = useRef<HTMLAudioElement>(new Audio(data?.streamUrl))
+
+  const currentIndex = useMemo(() => dataList.findIndex(v => v._id === data?._id), [ dataList, data?._id ])
+
+  const goToOffset = (offset: number) => {
+    if (!dataList.length || currentIndex === -1) return
+    const nextItem = dataList[(currentIndex + offset + dataList.length) % dataList.length]
+    onChangeRadio(nextItem)
+  }
 
   useEffect(() => {
 
@@ -22,6 +31,11 @@ export default function PlayerComponent() {
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ data?.streamUrl ])
+
+  useEffect(() => {
+    audio.current.volume = volume
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ volume ])
 
   // const keyDownHandler = (event: KeyboardEvent|any, isPlaying: boolean) => {
   //   if (event.key === " ") {
@@ -56,28 +70,59 @@ export default function PlayerComponent() {
   }
 
   const renderIcons = useMemo(() => {
-    if (isLoading) return <button disabled><AiOutlineLoading3Quarters className=" size-7 animate-spin" /></button>
-    else if (isPlaying) return <button onClick={handlePause}><FaStop className=" size-7" /></button>
-    return <button onClick={handlePlay}><FaPlay className=" size-7" /></button>
+    if (isLoading) return <button disabled><AiOutlineLoading3Quarters className="size-4 md:size-6 animate-spin text-black" /></button>
+    else if (isPlaying) return <button onClick={handlePause}><FaStop className="size-4 md:size-6 text-black" /></button>
+    return <button onClick={handlePlay}><FaPlay className="size-4 md:size-6 text-black" /></button>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ isLoading, isPlaying ])
 
-  return <div className="w-screen h-[80px] bg-white absolute p-2 border-t-2 border-black">
-    <div className="flex items-center justify-around px-2 md:px-0 md:flex-row-reverse  md:justify-around gap-4">
+  return <div className=" bg-white p-4 md:px-8 border-4 border-black flex md:items-center justify-between gap-4 shadow-[6px_6px_0_#000]">
 
-      <div className="inline-flex items-center justify-center rounded-md p-2 bg-white border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
+    <div className="flex items-center gap-3 min-w-0">
+      <div className="w-full max-w-[56px] aspect-square overflow-hidden bg-white border-2 border-black shrink-0">
+        <img
+          src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
+          className="h-full w-full object-contain"
+        />
+      </div>
+      <div className="min-w-0">
+        {isPlaying && (
+          <span className="inline-flex items-center gap-1.5 bg-yellow-300 border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest mb-1">
+            <span className="size-1.5 rounded-full bg-red-600 animate-pulse" />
+            Now playing
+          </span>
+        )}
+        <div className="text-sm md:text-base font-bold text-black line-clamp-1 text-ellipsis">{data?.title}</div>
+      </div>
+    </div>
+
+    <div className="flex items-center gap-2 md:gap-3 shrink-0">
+      <button
+        onClick={() => goToOffset(-1)}
+        className="inline-flex items-center justify-center p-1 md:p-2 bg-white border-2 border-black shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all duration-200 ease-in-out"
+      >
+        <FaStepBackward className="size-3 md:size-4 text-black" />
+      </button>
+      <div className="inline-flex items-center justify-center p-1 md:p-3 bg-orange-500 border-2 border-black shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-200 ease-in-out">
         {renderIcons}
       </div>
-      
-      <div className="flex items-center gap-4 justify-center">
-        <div className=" w-full max-w-[60px] aspect-square rounded-md overflow-hidden bg-white">
-          <img
-            src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
-            className="h-full w-full object-contain"
-          />
-        </div>
-        <div className=" hidden md:block text-base md:text-lg line-clamp-1 text-ellipsis">{data?.title}</div>
-      </div>
+      <button
+        onClick={() => goToOffset(1)}
+        className="inline-flex items-center justify-center p-1 md:p-2 bg-white border-2 border-black shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all duration-200 ease-in-out"
+      >
+        <FaStepForward className="size-3 md:size-4 text-black" />
+      </button>
+    </div>
+
+    <div className="hidden md:flex items-center gap-2 shrink-0">
+      <button onClick={() => setVolume(v => v > 0 ? 0 : 1)}>
+        {volume > 0 ? <FaVolumeUp className="size-5 text-black" /> : <FaVolumeMute className="size-5 text-black" />}
+      </button>
+      <input
+        type="range" min={0} max={1} step={0.01} value={volume}
+        onChange={e => setVolume(Number(e.target.value))}
+        className="w-24 accent-orange-500"
+      />
     </div>
   </div>
 }
