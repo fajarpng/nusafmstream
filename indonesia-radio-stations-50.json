@@ -1,0 +1,239 @@
+{
+  "stations": [
+    {
+      "name": "RRI Pro 1 Aceh Singkil",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/36/9136/rriacehsingkilpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2jd1nyqs0008gzc5g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Alor",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/41/9041/rrialorpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2jhanyqs0008gzc60.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Ambon",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/15/9315/rriambonpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2jp2sracg008cr5d0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Ampana",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/37/9337/rriampanapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2jskwyf60008m9cmg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Atambua",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/25/9225/rriatambuapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2kd59hjhg008xb7xg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Banda Aceh",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/14/9214/rribandaacehpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2khpsracg008cr5fg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bandar Lampung",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/12/9112/rrilampungpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2kz703fpg008pa5ng.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bandung",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/15/9015/rribandungpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2m2803fpg008pa5p0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Banjarmasin",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/19/9019/rribanjarmasinpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2m5gnyqs0008gzc70.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Banten",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/36/9036/rribantenpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2m8szn08g008vbtqg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Batam",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/25/9125/rribatampro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2mc19hjhg008xb800.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Belitung",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/20/9020/rribelitungpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2mmtsracg008cr5g0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bengkalis",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/37/9137/rribengkalispro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2mrv03fpg008pa5q0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bengkulu",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/11/9311/rribengkulupro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2mwk03fpg008pa5qg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Biak",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/17/9117/rribiakpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2n04wyf60008m9cqg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bima",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/20/9120/rribimapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2nad00hrg008kxy2g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bintuhan",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/37/9237/rribintuhanpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2nedwyf60008m9crg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bogor",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/19/9319/rribogorpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2nk69hjhg008xb820.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bone",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/37/9237/rribonepro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2nxqdhx4g008tgc4g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bovendigul",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/36/9036/rribouvenpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2p0gdhx4g008tgc5g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bukittinggi",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/16/9216/rribkttinggipro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2p40sracg008cr5jg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Bula",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/20/9020/rribulapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2p70zn08g008vbtr0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Cirebon",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/17/9317/rricirebonpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/cvztx6mr2fgg0086xamg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Denpasar",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/21/9021/rridenpasarpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2qhp03fpg008pa5t0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Ende",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/23/9223/rriendepro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2qmeh1eyg008r16zg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Entikong",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/36/9236/rrientikongpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/d17qw5ghv0mg008ycb10.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Fak Fak",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/21/9321/rrifakfakpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2qvqnyqs0008gzc8g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Gorontalo",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/15/9115/rrigorontalopro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2qyfh1eyg008r1700.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Gunungsitoli",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/25/9225/rrisitolipro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/d3wyzme3w2b0008cf4f0.p591x591.png"
+    },
+    {
+      "name": "RRI Pro 1 Jambi",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/11/9211/rrijambipro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2r6g8edv00085x7n0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Jayapura",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/23/9023/rrijayapurapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2r9swyf60008m9cxg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Jember",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/40/9340/rrijemberpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2rd1sracg008cr5k0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Kaimana",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/36/9236/rrikaimanapro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/cvpmbkpg5zq00087h5g0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Kediri",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/20/9220/rrikediripro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb3ge9nyqs00083x0q0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Kendari",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/13/9313/rrikendaripro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb3ghtsracg008cr65g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Kupang",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/13/9213/rrikupangpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2rpjh1eyg008r171g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Labuan Bajo",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/37/9337/rrilabuanbajopro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2rsksracg008cr5mg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Lhokseumawe",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/40/9140/rrilhokseumawepro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2rxbzn08g008vbtt0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Madiun",
+      "streamUrl": "http://stream-node2.rri.co.id:9318/rrimadiunpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2spysracg008cr5n0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Makassar",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/22/9022/rrimakasarpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2sszsracg008cr5ng.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Malang",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/18/9218/rrimalangpro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2swf8edv00085x7q0.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Malinau",
+      "streamUrl": "https://stream-node2.rri.co.id/streaming/37/9237/rrimalinaupro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2sz703fpg008pa5vg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Mamuju",
+      "streamUrl": "https://stream-node0.rri.co.id/streaming/20/9020/rrimamujupro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2t20wyf60008m9d0g.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Manado",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/40/9040/rrimanadopro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/cxxm6xv4azmg008kvf3g.p1080x1080.jpeg"
+    },
+    {
+      "name": "RRI Pro 1 Manokwari",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/24/9024/rrimanokwaripro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2t8hzn08g008vbttg.p1080x1080.png"
+    },
+    {
+      "name": "RRI Pro 1 Mataram",
+      "streamUrl": "https://stream-node1.rri.co.id/streaming/13/9113/rrimatarampro1.mp3",
+      "imageUrl": "https://thumb2.svara.id/unsafe/1080x1080/svara-radio-logo/ctb2tb98edv00085x7s0.p1080x1080.png"
+    },
+    {
+      "name": "Sonora FM 92 Jakarta",
+      "streamUrl": "https://sonora-radio.arenastreaming.com/8130/stream",
+      "imageUrl": "https://www.google.com/s2/favicons?domain=sonora.co.id&sz=128"
+    }
+  ]
+}
