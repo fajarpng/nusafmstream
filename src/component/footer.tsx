@@ -6,13 +6,13 @@ export const Footer = () => {
       <p className="font-bold font-archivo-black text-2xl text-center md:text-start tracking-tighter">NUSA FM </p>
       <p className="text-sm flex-1 uppercase font-bricolage">Streaming Radio Nusantara</p>
     </div>
-    <a href="https://github.com/fajarpng/nusafmstream" target="_blank">
+    <a href="https://github.com/fajarpng/nusafmstream" target="_blank" aria-label="github">
       <div className=" text-black flex items-center gap-2 pr-4 border-r border-black"><FaCode className=" size-4" /> <span className="hidden md:block text-sm">Source Code</span></div>
     </a>
-    <a href="https://www.instagram.com/fajar_png" target="_blank">
+    <a href="https://www.instagram.com/fajar_png" target="_blank" aria-label="instagram">
       <div className=" text-black flex items-center gap-2 pr-4 border-r border-black"><FaInstagram className=" size-4" /> <span className="hidden md:block text-sm">Instagram</span></div>
     </a>
-    <a href="https://www.instagram.com/fajar_png" target="_blank">
+    <a href="https://www.linkedin.com/in/fajar-png" target="_blank" aria-label="linkedin">
       <div className=" text-black flex items-center gap-2 "><FaLinkedin className=" size-4" /> <span className="hidden md:block text-sm">LinkedIn</span></div>
     </a>
   </div>
