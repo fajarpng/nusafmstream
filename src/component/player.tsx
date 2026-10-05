@@ -78,14 +78,14 @@ export default function PlayerComponent() {
 
   return <div className=" bg-white p-4 md:px-8 border-4 border-black flex md:items-center justify-between gap-4 shadow-[6px_6px_0_#000] mb-4">
 
-    <div className="flex items-center gap-3 min-w-0">
+    <div className="flex-1 flex items-center gap-3 ">
       <div className="w-full max-w-[56px] aspect-square overflow-hidden bg-white border-2 border-black shrink-0">
         <img
           src={data?.logo || "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"} alt={data?.title || "Empty"}
           className="h-full w-full object-contain"
         />
       </div>
-      <div className="min-w-0">
+      <div>
         {isPlaying && (
           <span className="inline-flex items-center gap-1.5 bg-[#B8FF3C] border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest mb-1">
             <span className="size-1.5 rounded-full bg-red-600 animate-pulse" />
@@ -96,7 +96,7 @@ export default function PlayerComponent() {
       </div>
     </div>
 
-    <div className="flex items-center gap-2 md:gap-3 shrink-0">
+    <div className="flex-0 md:flex-1 flex items-center justify-center gap-2 md:gap-3 shrink-0 ">
       <button
         onClick={() => goToOffset(-1)}
         className="inline-flex items-center justify-center p-1 md:p-2 bg-white border-2 border-black shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all duration-200 ease-in-out"
@@ -114,7 +114,7 @@ export default function PlayerComponent() {
       </button>
     </div>
 
-    <div className="hidden md:flex items-center gap-2 shrink-0">
+    <div className="flex-1 hidden md:flex justify-end gap-2 shrink-0 ">
       <button onClick={() => setVolume(v => v > 0 ? 0 : 1)}>
         {volume > 0 ? <FaVolumeUp className="size-5 text-black" /> : <FaVolumeMute className="size-5 text-black" />}
       </button>
