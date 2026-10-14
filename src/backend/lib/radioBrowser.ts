@@ -70,10 +70,10 @@ const searchStations = (params: Record<string, string>) => fetchStations("/stati
 })
 
 // Shuffle array in place (Fisher-Yates) for variety in search results
-const shuffle = <T,>(arr: T[]): T[] => {
+const shuffle = <T, >(arr: T[]): T[] => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    ;[ arr[i], arr[j] ] = [ arr[j], arr[i] ]
   }
   return arr
 }

@@ -6,13 +6,9 @@ import { useFavorites } from "@/hooks/useFavorites"
 import { ChatMessage, FavoriteStation, RadioCandidate } from "@/utils/types"
 import { FormEvent, useEffect, useRef, useState } from "react"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
-import { BsStars } from "react-icons/bs"
-import { DiSpark } from "react-icons/di"
 import { FaCheck, FaPaperPlane, FaPlus } from "react-icons/fa"
 import { FaX } from "react-icons/fa6"
-import { GiSparkles } from "react-icons/gi"
-import { PiRobot, PiRobotFill } from "react-icons/pi"
-import { SiProbot } from "react-icons/si"
+import { PiRobotFill } from "react-icons/pi"
 
 type Message = ChatMessage & {
   candidates?: RadioCandidate[]
