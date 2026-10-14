@@ -1,3 +1,4 @@
+import ChatWidget from "@/component/chat"
 import { Footer } from "@/component/footer"
 import PlayerComponent from "@/component/player"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
@@ -5,6 +6,7 @@ import "@/styles/globals.css"
 import type { AppProps } from "next/app"
 import { Archivo_Black, Bricolage_Grotesque, Inter, Public_Sans, Space_Grotesk, Space_Mono } from "next/font/google"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import { QueryClient, QueryClientProvider } from "react-query"
 
 const inter = Inter({ subsets: [ "latin" ] })
@@ -28,6 +30,8 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   const { dataRadio } = useDataPlayer()
+  const { pathname } = useRouter()
+
   return <div className={`bg-[#FFD93D] ${spaceGrotesk.variable} ${archivoBlack.variable} ${spaceMono.variable} ${publicSans.variable} ${bricolage.variable}`}>
     <div className='min-h-screen'>
       <Head>
@@ -40,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <main className={inter.className }>
           <Component {...pageProps} />
           <div className="w-full fixed bottom-0 px-5 bg-[#FFD93D] z-30">
+            {pathname === "/" && <ChatWidget />}
             {dataRadio?.streamUrl && <PlayerComponent />}
             <Footer />
           </div>

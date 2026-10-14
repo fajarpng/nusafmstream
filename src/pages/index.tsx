@@ -3,6 +3,7 @@ import CardList from "@/component/cardList"
 import Header from "@/component/header"
 import LoadingComponent, { TuningStatus } from "@/component/loading"
 import { useDataPlayer } from "@/hooks/useDataPlayer"
+import { useFavorites } from "@/hooks/useFavorites"
 import { filterSearchName } from "@/utils/helper"
 import { DataStream } from "@/utils/types"
 import Head from "next/head"
@@ -11,6 +12,7 @@ import { useQuery } from "react-query"
 
 export default function Home() {
   const { onChangeRadio, setDataList } = useDataPlayer()
+  const { favorites } = useFavorites()
   const [ search, setSearch ] = useState<string>("")
   const { data, isLoading } = useQuery([ "radio/list", {} ], () => getListRadio({}))
   const [ tuningStatus, setTuningStatus ] = useState<TuningStatus | null>(isLoading ? "searching" : null)
@@ -33,6 +35,8 @@ export default function Home() {
     return dt
   }, [ data, search ])
 
+  const favoriteItems: DataStream[] = useMemo(() => filterSearchName(favorites, search), [ favorites, search ])
+
   useEffect(() => {
     setDataList(items)
   }, [ items, setDataList ])
@@ -47,6 +51,19 @@ export default function Home() {
         ? <LoadingComponent status={tuningStatus} />
         : <div className="p-5">
           <Header search={search} onSearchChange={setSearch} />
+          {!!favoriteItems.length && <>
+            <div className="flex items-center gap-4 md:pr-10 md:px-10 my-4 ">
+              <p className="font-extrabold font-archivo-black uppercase text-lg md:text-2xl text-black tracking-tighter bg-[#FF3E9D] border-[3px] border-black rounded-md shadow-[4px_4px_0_#000] px-4 py-1 rotate-1">My Favorites</p>
+              <div className="flex-1 border-t-4 border-black" />
+            </div>
+            <div className=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:px-10 pb-10">
+              {favoriteItems.map(v => (
+                <div key={v._id} onClick={() => onChangeRadio(v)} className='h-full'>
+                  <CardList data={v} />
+                </div>
+              ))}
+            </div>
+          </>}
           <div className="flex items-center gap-4 md:pr-10 md:px-10 my-4 ">
             <p className="font-extrabold font-archivo-black uppercase text-lg md:text-2xl text-black tracking-tighter bg-[#B8FF3C] border-[3px] border-black rounded-md shadow-[4px_4px_0_#000] px-4 py-1 -rotate-1">Radio Stations</p>
             <div className="flex-1 border-t-4 border-black" />

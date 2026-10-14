@@ -1,4 +1,4 @@
-import { Query, ResponseSuccess } from "@/utils/types"
+import { ChatMessage, ChatResult, DataStream, Query, ResponseSuccess } from "@/utils/types"
 import axios from "axios"
 
 export const getListRadio = (params?:Query) => {
@@ -20,5 +20,28 @@ export const editRadio = ({ body, id }:{body: object, id: number|string}) => {
     .then(res => {
       res.data.data || []
     })
+    .catch(error => { throw error })
+}
+export const sendChat = (messages: ChatMessage[]) => {
+  return axios.post<ResponseSuccess>("/api/chat", { messages })
+    .then(res => res.data.data as ChatResult)
+    .catch(error => { throw error })
+}
+
+export const getFavorites = () => {
+  return axios.get<ResponseSuccess>("/api/favorites")
+    .then(res => (res.data.data || []) as DataStream[])
+    .catch(error => { throw error })
+}
+
+export const addFavorite = (body: { radioId: string } | { stationId: string }) => {
+  return axios.post<ResponseSuccess>("/api/favorites", body)
+    .then(res => res.data.data)
+    .catch(error => { throw error })
+}
+
+export const removeFavorite = (radioId: string) => {
+  return axios.delete<ResponseSuccess>("/api/favorites", { params: { radioId } })
+    .then(res => res.data.data)
     .catch(error => { throw error })
 }

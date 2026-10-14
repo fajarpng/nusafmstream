@@ -1,6 +1,7 @@
 "use client"
 
 import { useDataPlayer } from "@/hooks/useDataPlayer"
+import { useFavorites } from "@/hooks/useFavorites"
 import { usePlayer } from "@/hooks/usePlayer"
 import { DataStream } from "@/utils/types"
 import { useMemo } from "react"
@@ -20,6 +21,8 @@ const pickBookmarkColor = (key = "") => {
 export default function CardList({ data, isAdmin = false }: {data: DataStream, isAdmin?: boolean}) {
   const { isPlaying, isLoading } = usePlayer()
   const { dataRadio: currentPlaying } = useDataPlayer()
+  const { isFavorite, toggleFavorite, isUpdating } = useFavorites()
+  const favorited = isFavorite(data?._id)
 
   const renderIcons = useMemo(() => {
     if (isAdmin) return <MdEdit className=" size-8" />
@@ -31,13 +34,25 @@ export default function CardList({ data, isAdmin = false }: {data: DataStream, i
   const bookmarkColor = useMemo(() => pickBookmarkColor(String(data?._id ?? data?.title ?? "")), [ data?._id, data?.title ])
 
   return <div className="relative h-full group cursor-pointer rounded-xl p-3 md:p-4 bg-[#F7F4EA] border-[3px] border-black shadow-[5px_5px_0_#000] hover:translate-x-[5px] hover:translate-y-[5px] hover:shadow-none transition-all duration-200 ease-in-out">
-    {!(isPlaying && currentPlaying?._id === data?._id) &&
-      <svg
+    {isAdmin
+      ? <svg
         viewBox="0 0 20 30" aria-hidden="true"
         className="absolute -top-0 left-3 md:left-3 z-10 w-5 h-[30px] md:w-6 md:h-9 "
       >
         <path d="M1.5 0 V28 L10 21.5 L18.5 28 V0" fill={bookmarkColor} stroke="#000" strokeWidth="3" strokeLinejoin="miter" />
       </svg>
+      // The bookmark doubles as the favorite toggle: colored when saved, white when not
+      : <button
+        aria-label={favorited ? `Remove ${data?.title} from favorites` : `Add ${data?.title} to favorites`}
+        aria-pressed={favorited}
+        disabled={isUpdating}
+        onClick={e => { e.stopPropagation(); toggleFavorite(data._id) }}
+        className="absolute -top-0 left-3 z-20 px-1 pb-1 -mx-1 origin-top transition-transform duration-200 hover:scale-y-110 disabled:opacity-60"
+      >
+        <svg viewBox="0 0 20 30" aria-hidden="true" className="w-5 h-[30px] md:w-6 md:h-9">
+          <path d="M1.5 0 V28 L10 21.5 L18.5 28 V0" fill={favorited ? bookmarkColor : "#fff"} stroke="#000" strokeWidth="3" strokeLinejoin="miter" />
+        </svg>
+      </button>
     }
 
     <div className="w-full aspect-square relative self-center rounded-md ">

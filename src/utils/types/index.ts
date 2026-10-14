@@ -6,6 +6,34 @@ export type DataStream = {
     favorite: string | number
 }
 
+// The only station fields persisted for favorites
+export type FavoriteStation = {
+  name: string
+  streamUrl: string
+  imageUrl: string
+}
+
+export type RadioCandidate = FavoriteStation & {
+  id: string
+  country: string
+  state: string
+  codec: string
+  bitrate: number
+  valid: boolean
+  invalidReason?: string
+}
+
+export type ChatMessage = {
+  role: "user" | "model"
+  text: string
+}
+
+export type ChatResult = {
+  reply: string
+  candidates: RadioCandidate[]
+  added: FavoriteStation | null
+}
+
 export type ResponseSuccess = {
   data: string[] | Object
   message: string
