@@ -28,20 +28,8 @@ export const sendChat = (messages: ChatMessage[]) => {
     .catch(error => { throw error })
 }
 
-export const getFavorites = () => {
-  return axios.get<ResponseSuccess>("/api/favorites")
-    .then(res => (res.data.data || []) as DataStream[])
-    .catch(error => { throw error })
-}
-
-export const addFavorite = (body: { radioId: string } | { stationId: string }) => {
+export const addStation = (body: { stationId: string }) => {
   return axios.post<ResponseSuccess>("/api/favorites", body)
-    .then(res => res.data.data)
-    .catch(error => { throw error })
-}
-
-export const removeFavorite = (radioId: string) => {
-  return axios.delete<ResponseSuccess>("/api/favorites", { params: { radioId } })
-    .then(res => res.data.data)
+    .then(res => res.data.data as DataStream)
     .catch(error => { throw error })
 }

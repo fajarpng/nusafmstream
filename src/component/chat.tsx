@@ -50,7 +50,7 @@ const CandidateCard = ({ candidate }: { candidate: RadioCandidate }) => {
 }
 
 export default function ChatWidget() {
-  const { refresh } = useFavorites()
+  const { addFavorite } = useFavorites()
   const [ isOpen, setIsOpen ] = useState(false)
   const [ input, setInput ] = useState("")
   const [ isLoading, setIsLoading ] = useState(false)
@@ -74,7 +74,7 @@ export default function ChatWidget() {
     // The greeting is UI only, so it is not sent as history
     sendChat(next.filter(m => m !== GREETING).map(({ role, text }) => ({ role, text })))
       .then(result => {
-        if (result.added) refresh()
+        if (result.added) addFavorite(result.added.radioId)
         setMessages(prev => [ ...prev, { role: "model", text: result.reply, candidates: result.candidates, added: result.added } ])
       })
       .catch(error => {

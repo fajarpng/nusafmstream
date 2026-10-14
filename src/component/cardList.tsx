@@ -21,7 +21,7 @@ const pickBookmarkColor = (key = "") => {
 export default function CardList({ data, isAdmin = false }: {data: DataStream, isAdmin?: boolean}) {
   const { isPlaying, isLoading } = usePlayer()
   const { dataRadio: currentPlaying } = useDataPlayer()
-  const { isFavorite, toggleFavorite, isUpdating } = useFavorites()
+  const { isFavorite, toggleFavorite } = useFavorites()
   const favorited = isFavorite(data?._id)
 
   const renderIcons = useMemo(() => {
@@ -45,9 +45,8 @@ export default function CardList({ data, isAdmin = false }: {data: DataStream, i
       : <button
         aria-label={favorited ? `Remove ${data?.title} from favorites` : `Add ${data?.title} to favorites`}
         aria-pressed={favorited}
-        disabled={isUpdating}
         onClick={e => { e.stopPropagation(); toggleFavorite(data._id) }}
-        className="absolute -top-0 left-3 z-20 px-1 pb-1 -mx-1 origin-top transition-transform duration-200 hover:scale-y-110 disabled:opacity-60"
+        className="absolute -top-0 left-3 z-20 px-1 pb-1 -mx-1 origin-top transition-transform duration-200 hover:scale-y-110"
       >
         <svg viewBox="0 0 20 30" aria-hidden="true" className="w-5 h-[30px] md:w-6 md:h-9">
           <path d="M1.5 0 V28 L10 21.5 L18.5 28 V0" fill={favorited ? bookmarkColor : "#fff"} stroke="#000" strokeWidth="3" strokeLinejoin="miter" />

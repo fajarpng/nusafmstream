@@ -31,7 +31,7 @@ export type ChatMessage = {
 export type ChatResult = {
   reply: string
   candidates: RadioCandidate[]
-  added: FavoriteStation | null
+  added: (FavoriteStation & { radioId: string }) | null
 }
 
 export type ResponseSuccess = {

@@ -68,10 +68,10 @@ const generateContent = async (contents: Content[]): Promise<Content> => {
 
 // onAdd persists the validated station; the model only reports success if it doesn't throw
 // eslint-disable-next-line no-unused-vars
-export const runChat = async (history: ChatMessage[], onAdd: (station: FavoriteStation) => Promise<unknown>): Promise<ChatResult> => {
+export const runChat = async (history: ChatMessage[], onAdd: (station: FavoriteStation) => Promise<{ _id: unknown }>): Promise<ChatResult> => {
   const contents: Content[] = history.map(m => ({ role: m.role, parts: [ { text: m.text } ] }))
   let candidates: RadioCandidate[] = []
-  let added: FavoriteStation | null = null
+  let added: ChatResult["added"] = null
 
   const runTool = async (name: string, args: Record<string, unknown> = {}) => {
     if (name === "searchRadioStations") {
@@ -84,13 +84,14 @@ export const runChat = async (history: ChatMessage[], onAdd: (station: FavoriteS
       const station = await getStationById(String(args.id || ""))
       if (!station) return { ok: false, error: "Station not found" }
       if (!station.valid) return { ok: false, error: station.invalidReason }
+      let radio: { _id: unknown }
       try {
-        await onAdd(toFavorite(station))
+        radio = await onAdd(toFavorite(station))
       } catch (error) {
         console.error(error)
         return { ok: false, error: "Saving the station failed" }
       }
-      added = toFavorite(station)
+      added = { ...toFavorite(station), radioId: String(radio._id) }
       return { ok: true, name: station.name }
     }
     return { ok: false, error: `Unknown tool: ${name}` }

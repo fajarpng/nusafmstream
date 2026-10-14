@@ -1,4 +1,4 @@
-import { saveStationAsFavorite } from "@/backend/lib/favorites"
+import { saveStation } from "@/backend/lib/favorites"
 import { runChat } from "@/backend/lib/gemini"
 import { checkChatLimit } from "@/backend/lib/rateLimit"
 import { getVisitorId } from "@/backend/lib/visitor"
@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const limitMessage = await checkChatLimit(req, visitorId)
     if (limitMessage) return res.status(429).json({ data: {}, message: limitMessage })
 
-    const data = await runChat(history, station => saveStationAsFavorite(visitorId, station))
+    const data = await runChat(history, saveStation)
     res.status(200).json({ data, message: "success" })
   } catch (error) {
     console.error(error)
